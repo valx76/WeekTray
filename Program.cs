@@ -12,7 +12,10 @@ static class Program
                 MessageBox.Show("Instance already running!", "WeekTray");
                 return;
             }
-            
+
+            Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+
             var app = new WeekTray();
             app.Run();
         }

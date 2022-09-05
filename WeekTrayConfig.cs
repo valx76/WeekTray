@@ -21,21 +21,23 @@ public class WeekTrayConfig : Form
         buttonTextColor.Text = "Text color..";
         buttonTextColor.Dock = DockStyle.Fill;
         buttonTextColor.Click += (sender, args) => ChangeColor(ref textColor);
+        buttonTextColor.AutoSize = true;
+        buttonTextColor.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
         Button buttonBackgroundColor = new Button();
         buttonBackgroundColor.Text = "Background color..";
         buttonBackgroundColor.Dock = DockStyle.Fill;
         buttonBackgroundColor.Click += (sender, args) => ChangeColor(ref backgroundColor);
-
-        Label emptyLabel = new Label();
-        emptyLabel.Text = String.Empty;
-        emptyLabel.Dock = DockStyle.Fill;
+        buttonBackgroundColor.AutoSize = true;
+        buttonBackgroundColor.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
         Button buttonSave = new Button();
         buttonSave.Text = "Save";
         buttonSave.Click += (sender, args) => this.DialogResult = DialogResult.OK;
         buttonSave.Dock = DockStyle.Bottom;
-        
+        buttonSave.AutoSize = true;
+        buttonSave.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
         label = new Label();
         label.Text = "00";
         label.Dock = DockStyle.Fill;
@@ -47,31 +49,37 @@ public class WeekTrayConfig : Form
         innerLeftPanel.ColumnCount = 1;
         innerLeftPanel.RowCount = 3;
         innerLeftPanel.Dock = DockStyle.Fill;
+        innerLeftPanel.AutoSize = true;
+        innerLeftPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         innerLeftPanel.Controls.Add(buttonTextColor);
         innerLeftPanel.Controls.Add(buttonBackgroundColor);
-        innerLeftPanel.Controls.Add(emptyLabel);
 
         Panel leftPanel = new Panel();
         leftPanel.Padding = new Padding(20);
-        leftPanel.Dock = DockStyle.Left;
+        leftPanel.Dock = DockStyle.Fill;
+        leftPanel.AutoSize = true;
+        leftPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         leftPanel.Controls.Add(innerLeftPanel);
         leftPanel.Controls.Add(buttonSave);
 
         Panel rightPanel = new Panel();
         rightPanel.Dock = DockStyle.Right;
+        rightPanel.Width = 200;
+        rightPanel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
         rightPanel.Controls.Add(label);
 
 
         this.Controls.Add(leftPanel);
         this.Controls.Add(rightPanel);
-        
-        this.Width = Constants.SETTINGS_WINDOW_WIDTH;
-        this.Height = Constants.SETTINGS_WINDOW_HEIGHT;
+
+        this.AutoSize = true;
         this.AcceptButton = buttonSave;
 
         this.FormBorderStyle = FormBorderStyle.FixedSingle;
         this.MinimizeBox = false;
         this.MaximizeBox = false;
+
+        this.Text = "Configuration";
 
 
         dto = new ConfigDto()

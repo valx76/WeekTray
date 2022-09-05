@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using Timer = System.Windows.Forms.Timer;
 
@@ -56,6 +57,8 @@ public class WeekTray
         bitmap = new Bitmap(Constants.TRAY_ICON_SIZE, Constants.TRAY_ICON_SIZE);
         bitmapRect = new Rectangle(0, 0, Constants.TRAY_ICON_SIZE, Constants.TRAY_ICON_SIZE);
         g = Graphics.FromImage(bitmap);
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
+
 
         timer = new Timer();
         timer.Tick += UpdateTrayIcon;
